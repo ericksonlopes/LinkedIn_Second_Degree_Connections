@@ -33,6 +33,8 @@ if __name__ == '__main__':
 
     # instancia o obj do webdriver chrome
     driver = webdriver.Chrome()
+
+    # Fazer login
     login(email='ofc.erickson@gmail.com', password='123', driverweb=driver)
 
     # fecha o chrome
