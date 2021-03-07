@@ -1,7 +1,9 @@
 from time import sleep
-
 import chromedriver_autoinstaller
 from selenium import webdriver
+from selenium.webdriver.common.keys import Keys
+
+from urls import dicas_python
 
 
 def login(email, password, driverweb):
@@ -15,7 +17,6 @@ def login(email, password, driverweb):
     field_email = driverweb.find_element_by_xpath(xpath_email)
     field_email.click()
     field_email.send_keys(email)
-    sleep(0.30)
 
     # Procura o xpath do campo password, clica, e digita o password
     field_passwod = driverweb.find_element_by_xpath(xpath_password)
@@ -25,6 +26,8 @@ def login(email, password, driverweb):
     xpath_btn = '/html/body/main/section[1]/div[2]/form/button'
     # clica no botão para entrar
     driverweb.find_element_by_xpath(xpath_btn).click()
+
+    sleep(1)
 
 
 if __name__ == '__main__':
@@ -37,5 +40,22 @@ if __name__ == '__main__':
     # Fazer login
     login(email='ofc.erickson@gmail.com', password='123', driverweb=driver)
 
+    driver.get('https://www.linkedin.com/posts/ericksonlopesdev_dicapython-python-dica-activity-6773560821525082112-uQpq')
+    sleep(1)
+    reactions = driver.find_element_by_xpath('//*[@id="ember71"]/ul/li[1]/button')
+
+    # printa quantidade de reações
+    print(reactions.text)
+    reactions.click()
+    sleep(0.30)
+
+    # all_reaction = reactions.find_element_by_xpath('//*[@id="ember485"]/div/span[2]')
+    # print(all_reaction.text)
+
+
+    # for url in dicas_python:
+    #     print(url)
+
+    input()
     # fecha o chrome
     driver.close()
