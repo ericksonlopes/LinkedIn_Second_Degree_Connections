@@ -41,6 +41,7 @@ if __name__ == '__main__':
     login(email='ofc.erickson@gmail.com', password='123', driverweb=driver)
 
     driver.get('https://www.linkedin.com/posts/ericksonlopesdev_dicapython-python-dica-activity-6773560821525082112-uQpq')
+
     sleep(1)
     reactions = driver.find_element_by_xpath('//*[@id="ember71"]/ul/li[1]/button')
 
@@ -49,9 +50,12 @@ if __name__ == '__main__':
     reactions.click()
     sleep(0.30)
 
-    # all_reaction = reactions.find_element_by_xpath('//*[@id="ember485"]/div/span[2]')
-    # print(all_reaction.text)
+    all_reaction = driver.find_element_by_id('ember545')
 
+    for item in all_reaction.find_elements_by_class_name('mr1'):
+        print(item)
+
+    # print(all_reaction)
 
     # for url in dicas_python:
     #     print(url)
